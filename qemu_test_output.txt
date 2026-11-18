@@ -1,0 +1,2272 @@
+make[1]: Entering directory '/home/yuxing/rCore-Tutorial-v3'
+make[2]: Entering directory '/home/yuxing/rCore-Tutorial-v3/arceos'
+[37maxconfig-gen[0m [90mconfigs/defconfig.toml /home/yuxing/rCore-Tutorial-v3/platconfig/riscv64-qemu-virt.toml  -w arch=riscv64 -w platform=riscv64-qemu-virt -o "/home/yuxing/rCore-Tutorial-v3/.axconfig-riscv64.toml" -c "/home/yuxing/rCore-Tutorial-v3/.axconfig-riscv64.toml"[0m
+    [92;1mBuilding[0m App: oscomp-runner, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C /home/yuxing/rCore-Tutorial-v3/compat/oscomp-runner build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/yuxing/rCore-Tutorial-v3/target --release  --features "axstd/defplat axstd/log-level-info axstd/bus-mmio axstd/alloc axstd/fs axstd/myfs axstd/paging axstd/irq axstd/multitask"[0m
+warning: Patch `virtio-drivers v0.7.5 (/home/yuxing/rCore-Tutorial-v3/compat/virtio-drivers)` was not used in the crate graph.
+Check that the patched package version and available features are compatible
+with the dependency requirements. If the patch has a different version from
+what is locked in the Cargo.lock file, run `cargo update` to use the new
+version. This may also occur with an optional dependency that is not enabled.
+warning: unused import: `IpAddr`
+ --> /home/yuxing/rCore-Tutorial-v3/arceos/modules/axnet/src/smoltcp_impl/addr.rs:1:17
+  |
+1 | use core::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr, SocketAddrV4, SocketAddrV6};
+  |                 ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: function `snoop_tcp_packet` is never used
+   --> /home/yuxing/rCore-Tutorial-v3/arceos/modules/axnet/src/smoltcp_impl/mod.rs:279:4
+    |
+279 | fn snoop_tcp_packet(buf: &[u8], sockets: &mut SocketSet<'_>) -> Result<(), smoltcp::wire::Error> {
+    |    ^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: field `listen_endpoint` is never read
+  --> /home/yuxing/rCore-Tutorial-v3/arceos/modules/axnet/src/smoltcp_impl/listen_table.rs:15:5
+   |
+14 | struct ListenTableEntry {
+   |        ---------------- field in this struct
+15 |     listen_endpoint: IpListenEndpoint,
+   |     ^^^^^^^^^^^^^^^
+
+warning: method `can_accept` is never used
+  --> /home/yuxing/rCore-Tutorial-v3/arceos/modules/axnet/src/smoltcp_impl/listen_table.rs:28:8
+   |
+19 | impl ListenTableEntry {
+   | --------------------- method in this implementation
+...
+28 |     fn can_accept(&self, dst: IpAddress) -> bool {
+   |        ^^^^^^^^^^
+
+warning: method `incoming_tcp_packet` is never used
+   --> /home/yuxing/rCore-Tutorial-v3/arceos/modules/axnet/src/smoltcp_impl/listen_table.rs:113:12
+    |
+48  | impl ListenTable {
+    | ---------------- method in this implementation
+...
+113 |     pub fn incoming_tcp_packet(
+    |            ^^^^^^^^^^^^^^^^^^^
+
+warning: `axnet` (lib) generated 5 warnings (run `cargo fix --lib -p axnet` to apply 1 suggestion)
+warning: unused import: `ToString`
+ --> src/ext4_vfs.rs:7:29
+  |
+7 | use alloc::string::{String, ToString};
+  |                             ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `qemu::*`
+  --> src/board/mod.rs:10:9
+   |
+10 | pub use qemu::*;
+   |         ^^^^^^^
+
+warning: unused imports: `SIGBUS`, `SIGFPE`, and `check_signals_of_current`
+  --> src/trap/mod.rs:12:5
+   |
+12 |     check_signals_of_current, check_fatal_signals, current_add_signal,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+16 |     SIGSEGV, SIGILL, SIGFPE, SIGBUS,
+   |                      ^^^^^^  ^^^^^^
+
+warning: unused imports: `scause` and `stvec`
+  --> src/trap/mod.rs:20:23
+   |
+20 | use riscv::register::{scause, sie, sscratch, sstatus, stval, stvec};
+   |                       ^^^^^^                                 ^^^^^
+
+warning: unused import: `axhal::paging::MappingFlags`
+  --> src/trap/mod.rs:95:9
+   |
+95 |     use axhal::paging::MappingFlags;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `boxed::Box`
+ --> src/syscall.rs:9:13
+  |
+9 | use alloc::{boxed::Box, string::String, sync::Arc, vec::Vec};
+  |             ^^^^^^^^^^
+
+warning: unused imports: `FdTable`, `O_CREAT`, `O_DIRECTORY`, `O_RDWR`, and `O_TRUNC`
+  --> src/syscall.rs:14:11
+   |
+14 |     self, FdTable, Pid, ProcessControlBlock, ProcessState,
+   |           ^^^^^^^
+15 |     layout, O_RDONLY, O_WRONLY, O_RDWR, O_CREAT, O_TRUNC, O_CLOEXEC, O_DIRECTORY,
+   |                                 ^^^^^^  ^^^^^^^  ^^^^^^^             ^^^^^^^^^^^
+
+warning: unused import: `axerrno::AxResult`
+  --> src/task.rs:11:5
+   |
+11 | use axerrno::AxResult;
+   |     ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `axtask::TaskExtRef`
+  --> src/task.rs:14:5
+   |
+14 | use axtask::TaskExtRef;
+   |     ^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `FdTable` and `ProcessControlBlock`
+  --> src/net.rs:16:22
+   |
+16 | use crate::process::{ProcessControlBlock, FdTable};
+   |                      ^^^^^^^^^^^^^^^^^^^  ^^^^^^^
+
+warning: unused import: `alloc::string::String`
+ --> src/ext4_import.rs:5:5
+  |
+5 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::string::ToString`
+ --> src/test_elf_runner.rs:5:5
+  |
+5 | use alloc::string::ToString;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::string::String`
+ --> src/test_elf_runner.rs:6:5
+  |
+6 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::format`
+ --> src/test_elf_runner.rs:7:5
+  |
+7 | use alloc::format;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `alloc::string::String`
+ --> src/test_basic.rs:4:5
+  |
+4 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::format`
+ --> src/test_basic.rs:5:5
+  |
+5 | use alloc::format;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `alloc::string::String`
+ --> src/test_busybox.rs:4:5
+  |
+4 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::format`
+ --> src/test_busybox.rs:5:5
+  |
+5 | use alloc::format;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `alloc::string::String`
+ --> src/test_libctest.rs:4:5
+  |
+4 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::format`
+ --> src/test_libctest.rs:5:5
+  |
+5 | use alloc::format;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `alloc::format`
+ --> src/test_bench.rs:5:5
+  |
+5 | use alloc::format;
+  |     ^^^^^^^^^^^^^
+
+warning: unused import: `test_elf_runner::run_elf_test`
+  --> src/ext4_import.rs:25:9
+   |
+25 | pub use test_elf_runner::run_elf_test;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/ext4_vfs.rs:1:1
+  |
+1 | #![no_std]
+  | ^^^^^^^^^^
+  |
+  = note: `#[warn(unused_attributes)]` on by default
+
+warning: crate-level attribute should be in the root module
+ --> src/ext4_import.rs:1:1
+  |
+1 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_elf_runner.rs:2:1
+  |
+2 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_basic.rs:1:1
+  |
+1 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_busybox.rs:1:1
+  |
+1 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_libctest.rs:1:1
+  |
+1 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_lua.rs:2:1
+  |
+2 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_ltp.rs:2:1
+  |
+2 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: crate-level attribute should be in the root module
+ --> src/test_bench.rs:2:1
+  |
+2 | #![no_std]
+  | ^^^^^^^^^^
+
+warning: unreachable pattern
+  --> src/ext4_vfs.rs:77:9
+   |
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ------------- matches any value
+77 |         NotADirectory => VfsError::NotADirectory,
+   |         ^^^^^^^^^^^^^ no value can reach this
+   |
+   = note: `#[warn(unreachable_patterns)]` on by default
+
+warning: unreachable pattern
+  --> src/ext4_vfs.rs:78:9
+   |
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ------------- matches any value
+77 |         NotADirectory => VfsError::NotADirectory,
+78 |         IsADirectory => VfsError::IsADirectory,
+   |         ^^^^^^^^^^^^ no value can reach this
+
+warning: unreachable pattern
+  --> src/ext4_vfs.rs:79:9
+   |
+79 |         InvalidInput => VfsError::InvalidInput,
+   |         ^^^^^^^^^^^^ no value can reach this
+   |
+note: multiple earlier patterns match some of the same values
+  --> src/ext4_vfs.rs:79:9
+   |
+75 |         NotFound => VfsError::NotFound,
+   |         -------- matches some of the same values
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ------------- matches some of the same values
+...
+79 |         InvalidInput => VfsError::InvalidInput,
+   |         ^^^^^^^^^^^^ collectively making this unreachable
+
+warning: unreachable pattern
+  --> src/ext4_vfs.rs:80:9
+   |
+80 |         _ => VfsError::Io,
+   |         ^ no value can reach this
+   |
+note: multiple earlier patterns match some of the same values
+  --> src/ext4_vfs.rs:80:9
+   |
+75 |         NotFound => VfsError::NotFound,
+   |         -------- matches some of the same values
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ------------- matches some of the same values
+...
+80 |         _ => VfsError::Io,
+   |         ^ collectively making this unreachable
+
+warning: unused variable: `AlreadyExists`
+  --> src/ext4_vfs.rs:76:9
+   |
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_AlreadyExists`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `InvalidInput`
+  --> src/ext4_vfs.rs:79:9
+   |
+79 |         InvalidInput => VfsError::InvalidInput,
+   |         ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_InvalidInput`
+
+warning: unused variable: `path`
+   --> src/ext4_vfs.rs:182:22
+    |
+182 |     fn create(&self, path: &str, ty: VfsNodeType) -> VfsResult {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_path`
+
+warning: unused variable: `i`
+   --> src/ext4_vfs.rs:208:14
+    |
+208 |         for (i, entry) in entries.iter().enumerate().skip(start_idx) {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+
+warning: unused variable: `sstatus`
+  --> src/trap/context.rs:25:13
+   |
+25 |         let sstatus = sstatus::read();
+   |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_sstatus`
+
+warning: unused variable: `aspace`
+  --> src/trap/mod.rs:93:31
+   |
+93 | pub fn map_trampoline_to_user(aspace: &mut axmm::AddrSpace) {
+   |                               ^^^^^^ help: if this is intentional, prefix it with an underscore: `_aspace`
+
+warning: value assigned to `cx` is never read
+   --> src/trap/mod.rs:206:21
+    |
+206 |                     cx = current_trap_cx();
+    |                     ^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: unreachable pattern
+   --> src/syscall.rs:203:25
+    |
+203 |         SYS_SIGACTION | SYS_RT_SIGACTION => sys_sigaction(args[0], args[1], args[2]),
+    |         -------------   ^^^^^^^^^^^^^^^^ no value can reach this
+    |         |
+    |         matches all the relevant values
+
+warning: unreachable pattern
+   --> src/syscall.rs:204:27
+    |
+204 |         SYS_SIGPROCMASK | SYS_RT_SIGPROCMASK => sys_sigprocmask(args[0], args[1], args[2]),
+    |         ---------------   ^^^^^^^^^^^^^^^^^^ no value can reach this
+    |         |
+    |         matches all the relevant values
+
+warning: unreachable pattern
+   --> src/syscall.rs:205:25
+    |
+205 |         SYS_SIGRETURN | SYS_RT_SIGRETURN => sys_sigreturn(),
+    |         -------------   ^^^^^^^^^^^^^^^^ no value can reach this
+    |         |
+    |         matches all the relevant values
+
+warning: unreachable pattern
+   --> src/syscall.rs:226:21
+    |
+226 |         SYS_YIELD | SYS_SCHED_YIELD => sys_yield(),
+    |         ---------   ^^^^^^^^^^^^^^^ no value can reach this
+    |         |
+    |         matches all the relevant values
+
+warning: unreachable pattern
+   --> src/syscall.rs:150:9
+    |
+149 |         SYS_FORK       => sys_fork(),
+    |         -------- matches all the relevant values
+150 |         SYS_CLONE      => sys_clone(args[0], args[1], args[2], args[3], args[4]),
+    |         ^^^^^^^^^ no value can reach this
+
+warning: unused variable: `stack`
+   --> src/syscall.rs:419:5
+    |
+419 |     stack: usize,
+    |     ^^^^^ help: if this is intentional, prefix it with an underscore: `_stack`
+
+warning: unused variable: `ptid`
+   --> src/syscall.rs:420:5
+    |
+420 |     ptid: usize,
+    |     ^^^^ help: if this is intentional, prefix it with an underscore: `_ptid`
+
+warning: unused variable: `tls`
+   --> src/syscall.rs:421:5
+    |
+421 |     tls: usize,
+    |     ^^^ help: if this is intentional, prefix it with an underscore: `_tls`
+
+warning: unused variable: `ctid`
+   --> src/syscall.rs:422:5
+    |
+422 |     ctid: usize,
+    |     ^^^^ help: if this is intentional, prefix it with an underscore: `_ctid`
+
+warning: unused variable: `argv_ptr`
+   --> src/syscall.rs:445:32
+    |
+445 | fn sys_execve(path_ptr: usize, argv_ptr: usize, envp_ptr: usize) -> AxResult<isize> {
+    |                                ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_argv_ptr`
+
+warning: unused variable: `envp_ptr`
+   --> src/syscall.rs:445:49
+    |
+445 | fn sys_execve(path_ptr: usize, argv_ptr: usize, envp_ptr: usize) -> AxResult<isize> {
+    |                                                 ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_envp_ptr`
+
+warning: unused variable: `file_offset`
+   --> src/syscall.rs:790:17
+    |
+790 |             let file_offset = *entry.offset.lock();
+    |                 ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_file_offset`
+
+warning: unused variable: `entry`
+   --> src/syscall.rs:869:14
+    |
+869 |         Some(entry) => {
+    |              ^^^^^ help: if this is intentional, prefix it with an underscore: `_entry`
+
+warning: unused variable: `buf_ptr`
+   --> src/syscall.rs:852:24
+    |
+852 | fn sys_read(fd: usize, buf_ptr: usize, count: usize) -> AxResult<isize> {
+    |                        ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_buf_ptr`
+
+warning: unused variable: `count`
+   --> src/syscall.rs:852:40
+    |
+852 | fn sys_read(fd: usize, buf_ptr: usize, count: usize) -> AxResult<isize> {
+    |                                        ^^^^^ help: if this is intentional, prefix it with an underscore: `_count`
+
+warning: unused variable: `dirfd`
+   --> src/syscall.rs:910:15
+    |
+910 | fn sys_openat(dirfd: usize, path_ptr: usize, flags: usize, mode: usize) -> AxResult<isize> {
+    |               ^^^^^ help: if this is intentional, prefix it with an underscore: `_dirfd`
+
+warning: unused variable: `mode`
+   --> src/syscall.rs:910:60
+    |
+910 | fn sys_openat(dirfd: usize, path_ptr: usize, flags: usize, mode: usize) -> AxResult<isize> {
+    |                                                            ^^^^ help: if this is intentional, prefix it with an underscore: `_mode`
+
+warning: unused variable: `flags`
+   --> src/syscall.rs:944:43
+    |
+944 | fn sys_dup3(old_fd: usize, new_fd: usize, flags: usize) -> AxResult<isize> {
+    |                                           ^^^^^ help: if this is intentional, prefix it with an underscore: `_flags`
+
+warning: unused variable: `fd`
+   --> src/syscall.rs:972:14
+    |
+972 | fn sys_ioctl(fd: usize, request: usize, arg: usize) -> AxResult<isize> {
+    |              ^^ help: if this is intentional, prefix it with an underscore: `_fd`
+
+warning: unused variable: `request`
+   --> src/syscall.rs:972:25
+    |
+972 | fn sys_ioctl(fd: usize, request: usize, arg: usize) -> AxResult<isize> {
+    |                         ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_request`
+
+warning: unused variable: `arg`
+   --> src/syscall.rs:972:41
+    |
+972 | fn sys_ioctl(fd: usize, request: usize, arg: usize) -> AxResult<isize> {
+    |                                         ^^^ help: if this is intentional, prefix it with an underscore: `_arg`
+
+warning: unused variable: `fd`
+   --> src/syscall.rs:977:14
+    |
+977 | fn sys_fstat(fd: usize, stat_ptr: usize) -> AxResult<isize> {
+    |              ^^ help: if this is intentional, prefix it with an underscore: `_fd`
+
+warning: unused variable: `fd`
+   --> src/syscall.rs:988:19
+    |
+988 | fn sys_getdents64(fd: usize, dirp: usize, count: usize) -> AxResult<isize> {
+    |                   ^^ help: if this is intentional, prefix it with an underscore: `_fd`
+
+warning: unused variable: `dirp`
+   --> src/syscall.rs:988:30
+    |
+988 | fn sys_getdents64(fd: usize, dirp: usize, count: usize) -> AxResult<isize> {
+    |                              ^^^^ help: if this is intentional, prefix it with an underscore: `_dirp`
+
+warning: unused variable: `count`
+   --> src/syscall.rs:988:43
+    |
+988 | fn sys_getdents64(fd: usize, dirp: usize, count: usize) -> AxResult<isize> {
+    |                                           ^^^^^ help: if this is intentional, prefix it with an underscore: `_count`
+
+warning: unused variable: `flags`
+    --> src/syscall.rs:1022:33
+     |
+1022 | fn sys_pipe2(pipefd_ptr: usize, flags: usize) -> AxResult<isize> {
+     |                                 ^^^^^ help: if this is intentional, prefix it with an underscore: `_flags`
+
+warning: unused variable: `operation`
+    --> src/syscall.rs:1199:25
+     |
+1199 | fn sys_flock(fd: usize, operation: usize) -> AxResult<isize> {
+     |                         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_operation`
+
+warning: unused variable: `clockid`
+    --> src/syscall.rs:1232:22
+     |
+1232 | fn sys_clock_gettime(clockid: usize, tp_ptr: usize) -> AxResult<isize> {
+     |                      ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_clockid`
+
+warning: unused variable: `rem_ptr`
+    --> src/syscall.rs:1247:34
+     |
+1247 | fn sys_nanosleep(req_ptr: usize, rem_ptr: usize) -> AxResult<isize> {
+     |                                  ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_rem_ptr`
+
+warning: unused variable: `tidptr`
+    --> src/syscall.rs:1305:24
+     |
+1305 | fn sys_set_tid_address(tidptr: usize) -> AxResult<isize> {
+     |                        ^^^^^^ help: if this is intentional, prefix it with an underscore: `_tidptr`
+
+warning: unused variable: `option`
+    --> src/syscall.rs:1310:14
+     |
+1310 | fn sys_prctl(option: usize, arg2: usize, arg3: usize, arg4: usize) -> AxResult<isize> {
+     |              ^^^^^^ help: if this is intentional, prefix it with an underscore: `_option`
+
+warning: unused variable: `arg2`
+    --> src/syscall.rs:1310:29
+     |
+1310 | fn sys_prctl(option: usize, arg2: usize, arg3: usize, arg4: usize) -> AxResult<isize> {
+     |                             ^^^^ help: if this is intentional, prefix it with an underscore: `_arg2`
+
+warning: unused variable: `arg3`
+    --> src/syscall.rs:1310:42
+     |
+1310 | fn sys_prctl(option: usize, arg2: usize, arg3: usize, arg4: usize) -> AxResult<isize> {
+     |                                          ^^^^ help: if this is intentional, prefix it with an underscore: `_arg3`
+
+warning: unused variable: `arg4`
+    --> src/syscall.rs:1310:55
+     |
+1310 | fn sys_prctl(option: usize, arg2: usize, arg3: usize, arg4: usize) -> AxResult<isize> {
+     |                                                       ^^^^ help: if this is intentional, prefix it with an underscore: `_arg4`
+
+warning: unused variable: `pid`
+    --> src/syscall.rs:1315:18
+     |
+1315 | fn sys_prlimit64(pid: usize, resource: usize, new_limit: usize, old_limit: usize) -> AxResult<isize> {
+     |                  ^^^ help: if this is intentional, prefix it with an underscore: `_pid`
+
+warning: unused variable: `resource`
+    --> src/syscall.rs:1315:30
+     |
+1315 | fn sys_prlimit64(pid: usize, resource: usize, new_limit: usize, old_limit: usize) -> AxResult<isize> {
+     |                              ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_resource`
+
+warning: unused variable: `new_limit`
+    --> src/syscall.rs:1315:47
+     |
+1315 | fn sys_prlimit64(pid: usize, resource: usize, new_limit: usize, old_limit: usize) -> AxResult<isize> {
+     |                                               ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_limit`
+
+warning: unused variable: `old_limit`
+    --> src/syscall.rs:1315:65
+     |
+1315 | fn sys_prlimit64(pid: usize, resource: usize, new_limit: usize, old_limit: usize) -> AxResult<isize> {
+     |                                                                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_old_limit`
+
+warning: variable does not need to be mutable
+  --> src/net.rs:51:13
+   |
+51 |         let mut pcb_guard = pcb.lock();
+   |             ----^^^^^^^^^
+   |             |
+   |             help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: unused variable: `s`
+   --> src/net.rs:235:27
+    |
+235 |         Socket::TcpStream(s) => {
+    |                           ^ help: if this is intentional, prefix it with an underscore: `_s`
+
+warning: variable does not need to be mutable
+   --> src/net.rs:230:17
+    |
+230 |             let mut pcb_guard = pcb.lock();
+    |                 ----^^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> src/net.rs:327:17
+    |
+327 |             let mut udp = s.lock();
+    |                 ----^^^
+    |                 |
+    |                 help: remove this `mut`
+
+warning: constant `KERNEL_STACK_SIZE` is never used
+  --> src/config.rs:19:11
+   |
+19 | pub const KERNEL_STACK_SIZE: usize = 0x10000;
+   |           ^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `USER_STACK_SIZE` is never used
+  --> src/config.rs:22:11
+   |
+22 | pub const USER_STACK_SIZE: usize = 0x800_000;
+   |           ^^^^^^^^^^^^^^^
+
+warning: constant `TICKS_PER_SEC` is never used
+  --> src/config.rs:25:11
+   |
+25 | pub const TICKS_PER_SEC: usize = 100;
+   |           ^^^^^^^^^^^^^
+
+warning: constant `MAX_PROCESS_NUM` is never used
+  --> src/config.rs:28:11
+   |
+28 | pub const MAX_PROCESS_NUM: usize = 256;
+   |           ^^^^^^^^^^^^^^^
+
+warning: constant `MAX_PATH_LEN` is never used
+  --> src/config.rs:31:11
+   |
+31 | pub const MAX_PATH_LEN: usize = 256;
+   |           ^^^^^^^^^^^^
+
+warning: function `boot_disk` is never used
+  --> src/myfs.rs:21:8
+   |
+21 | pub fn boot_disk() -> Result<Arc<Mutex<AxDisk>>, axstd::string::String> {
+   |        ^^^^^^^^^
+
+warning: constant `CLOCK_FREQ` is never used
+ --> src/board/qemu.rs:8:11
+  |
+8 | pub const CLOCK_FREQ: usize = 12500000;
+  |           ^^^^^^^^^^
+
+warning: constant `MEMORY_END` is never used
+  --> src/board/qemu.rs:11:11
+   |
+11 | pub const MEMORY_END: usize = 0x8800_0000;
+   |           ^^^^^^^^^^
+
+warning: constant `MMIO` is never used
+  --> src/board/qemu.rs:14:11
+   |
+14 | pub const MMIO: &[(usize, usize)] = &[
+   |           ^^^^
+
+warning: constant `VIRT_PLIC` is never used
+  --> src/board/qemu.rs:22:11
+   |
+22 | pub const VIRT_PLIC: usize = 0xC00_0000;
+   |           ^^^^^^^^^
+
+warning: constant `VIRT_UART` is never used
+  --> src/board/qemu.rs:25:11
+   |
+25 | pub const VIRT_UART: usize = 0x1000_0000;
+   |           ^^^^^^^^^
+
+warning: function `device_init` is never used
+  --> src/board/qemu.rs:28:8
+   |
+28 | pub fn device_init() {
+   |        ^^^^^^^^^^^
+
+warning: function `shutdown` is never used
+ --> src/sbi.rs:9:8
+  |
+9 | pub fn shutdown(failure: bool) -> ! {
+  |        ^^^^^^^^
+
+warning: variants `Running` and `Blocked` are never constructed
+  --> src/process.rs:29:5
+   |
+27 | pub enum ProcessState {
+   |          ------------ variants in this enum
+28 |     Ready,
+29 |     Running,
+   |     ^^^^^^^
+30 |     Blocked,
+   |     ^^^^^^^
+   |
+   = note: `ProcessState` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `path` is never read
+  --> src/process.rs:49:9
+   |
+46 | pub struct FdEntry {
+   |            ------- field in this struct
+...
+49 |     pub path: String,
+   |         ^^^^
+   |
+   = note: `FdEntry` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: constant `O_RDWR` is never used
+  --> src/process.rs:56:11
+   |
+56 | pub const O_RDWR: u32 = 2;
+   |           ^^^^^^
+
+warning: constant `O_CREAT` is never used
+  --> src/process.rs:57:11
+   |
+57 | pub const O_CREAT: u32 = 0o100;
+   |           ^^^^^^^
+
+warning: constant `O_TRUNC` is never used
+  --> src/process.rs:58:11
+   |
+58 | pub const O_TRUNC: u32 = 0o1000;
+   |           ^^^^^^^
+
+warning: constant `O_DIRECTORY` is never used
+  --> src/process.rs:60:11
+   |
+60 | pub const O_DIRECTORY: u32 = 0o200000;
+   |           ^^^^^^^^^^^
+
+warning: function `init_process_manager` is never used
+   --> src/process.rs:288:8
+    |
+288 | pub fn init_process_manager() {
+    |        ^^^^^^^^^^^^^^^^^^^^
+
+warning: methods `count` and `has_children` are never used
+   --> src/process.rs:316:12
+    |
+292 | impl ProcessManager {
+    | ------------------- methods in this implementation
+...
+316 |     pub fn count(&self) -> usize {
+    |            ^^^^^
+...
+330 |     pub fn has_children(&self, pid: Pid) -> bool {
+    |            ^^^^^^^^^^^^
+
+warning: function `create_init_process` is never used
+   --> src/process.rs:368:8
+    |
+368 | pub fn create_init_process(
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `user_heap_base` is never used
+   --> src/process.rs:354:12
+    |
+354 |     pub fn user_heap_base() -> VirtAddr { VirtAddr::from_usize(0x4000_0000) }
+    |            ^^^^^^^^^^^^^^
+
+warning: function `read_elf_from_vfs` is never used
+   --> src/elf_loader.rs:290:8
+    |
+290 | pub fn read_elf_from_vfs(path: &str) -> AxResult<Vec<u8>> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: constant `SYS_WRITEV` is never used
+  --> src/syscall.rs:26:11
+   |
+26 | pub const SYS_WRITEV:     usize = 66;
+   |           ^^^^^^^^^^
+
+warning: constant `SYS_UNLINKAT` is never used
+  --> src/syscall.rs:52:11
+   |
+52 | pub const SYS_UNLINKAT:   usize = 35;
+   |           ^^^^^^^^^^^^
+
+warning: constant `SYS_MKDIRAT` is never used
+  --> src/syscall.rs:53:11
+   |
+53 | pub const SYS_MKDIRAT:    usize = 34;
+   |           ^^^^^^^^^^^
+
+warning: constant `SYS_LINKAT` is never used
+  --> src/syscall.rs:54:11
+   |
+54 | pub const SYS_LINKAT:     usize = 37;
+   |           ^^^^^^^^^^
+
+warning: constant `SYS_RENAMEAT` is never used
+  --> src/syscall.rs:55:11
+   |
+55 | pub const SYS_RENAMEAT:   usize = 38;
+   |           ^^^^^^^^^^^^
+
+warning: constant `SYS_TIMES` is never used
+  --> src/syscall.rs:75:11
+   |
+75 | pub const SYS_TIMES:       usize = 153;
+   |           ^^^^^^^^^
+
+warning: constant `SYS_SOCKETPAIR` is never used
+  --> src/syscall.rs:94:11
+   |
+94 | pub const SYS_SOCKETPAIR:  usize = 199;
+   |           ^^^^^^^^^^^^^^
+
+warning: constant `CLONE_FS` is never used
+   --> src/syscall.rs:124:11
+    |
+124 | pub const CLONE_FS:       u64 = 0x200;
+    |           ^^^^^^^^
+
+warning: constant `CLONE_FILES` is never used
+   --> src/syscall.rs:125:11
+    |
+125 | pub const CLONE_FILES:    u64 = 0x400;
+    |           ^^^^^^^^^^^
+
+warning: constant `CLONE_SIGHAND` is never used
+   --> src/syscall.rs:126:11
+    |
+126 | pub const CLONE_SIGHAND:  u64 = 0x800;
+    |           ^^^^^^^^^^^^^
+
+warning: constant `CLONE_PIDFD` is never used
+   --> src/syscall.rs:127:11
+    |
+127 | pub const CLONE_PIDFD:    u64 = 0x1000;
+    |           ^^^^^^^^^^^
+
+warning: constant `CLONE_PARENT` is never used
+   --> src/syscall.rs:128:11
+    |
+128 | pub const CLONE_PARENT:   u64 = 0x8000;
+    |           ^^^^^^^^^^^^
+
+warning: constant `CLONE_THREAD` is never used
+   --> src/syscall.rs:129:11
+    |
+129 | pub const CLONE_THREAD:   u64 = 0x10000;
+    |           ^^^^^^^^^^^^
+
+warning: constant `CLONE_SYSVSEM` is never used
+   --> src/syscall.rs:130:11
+    |
+130 | pub const CLONE_SYSVSEM:  u64 = 0x40000;
+    |           ^^^^^^^^^^^^^
+
+warning: constant `CLONE_VFORK` is never used
+   --> src/syscall.rs:131:11
+    |
+131 | pub const CLONE_VFORK:    u64 = 0x40000000;
+    |           ^^^^^^^^^^^
+
+warning: function `syscall` is never used
+   --> src/syscall.rs:249:8
+    |
+249 | pub fn syscall(sys_num: usize, args: [usize; 3]) -> isize {
+    |        ^^^^^^^
+
+warning: constant `MAP_FIXED_NOREPLACE` is never used
+   --> src/syscall.rs:659:7
+    |
+659 | const MAP_FIXED_NOREPLACE: usize = 0x100000;
+    |       ^^^^^^^^^^^^^^^^^^^
+
+warning: constant `PROT_NONE` is never used
+   --> src/syscall.rs:665:7
+    |
+665 | const PROT_NONE: usize = 0x0;
+    |       ^^^^^^^^^
+
+warning: constant `SIGCHLD` is never used
+  --> src/task.rs:39:11
+   |
+39 | pub const SIGCHLD:   usize = 17;
+   |           ^^^^^^^
+
+warning: constant `SIGCONT` is never used
+  --> src/task.rs:40:11
+   |
+40 | pub const SIGCONT:   usize = 18;
+   |           ^^^^^^^
+
+warning: constant `SIGTSTP` is never used
+  --> src/task.rs:42:11
+   |
+42 | pub const SIGTSTP:   usize = 20;
+   |           ^^^^^^^
+
+warning: constant `SIGTTIN` is never used
+  --> src/task.rs:43:11
+   |
+43 | pub const SIGTTIN:   usize = 21;
+   |           ^^^^^^^
+
+warning: constant `SIGTTOU` is never used
+  --> src/task.rs:44:11
+   |
+44 | pub const SIGTTOU:   usize = 22;
+   |           ^^^^^^^
+
+warning: constant `SIGURG` is never used
+  --> src/task.rs:45:11
+   |
+45 | pub const SIGURG:    usize = 23;
+   |           ^^^^^^
+
+warning: constant `SIGWINCH` is never used
+  --> src/task.rs:50:11
+   |
+50 | pub const SIGWINCH:  usize = 28;
+   |           ^^^^^^^^
+
+warning: function `signal_to_bit` is never used
+  --> src/task.rs:77:8
+   |
+77 | pub fn signal_to_bit(signum: usize) -> u64 {
+   |        ^^^^^^^^^^^^^
+
+warning: function `check_signals_of_current` is never used
+   --> src/task.rs:169:8
+    |
+169 | pub fn check_signals_of_current() -> Option<usize> {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `do_sigreturn` is never used
+   --> src/task.rs:414:8
+    |
+414 | pub fn do_sigreturn(trap_cx: &mut TrapContext) {
+    |        ^^^^^^^^^^^^
+
+warning: constant `SHUT_RDWR` is never used
+  --> src/net.rs:38:7
+   |
+38 | const SHUT_RDWR: usize = 2;
+   |       ^^^^^^^^^
+
+warning: function `run_lib_tests` is never used
+   --> src/ext4_import.rs:115:4
+    |
+115 | fn run_lib_tests(lib_name: &str) {
+    |    ^^^^^^^^^^^^^
+
+warning: function `run_elf_test` is never used
+  --> src/test_elf_runner.rs:20:8
+   |
+20 | pub fn run_elf_test(elf_data: &[u8], test_name: &str, extra_args: &[&str]) -> i32 {
+   |        ^^^^^^^^^^^^
+
+warning: function `run_basic_suite_flat` is never used
+ --> src/test_basic.rs:8:8
+  |
+8 | pub fn run_basic_suite_flat() {
+  |        ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `run_basic_test_flat` is never used
+  --> src/test_basic.rs:24:4
+   |
+24 | fn run_basic_test_flat(test_name: &str) {
+   |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `run_ltp_suite_flat` is never used
+  --> src/test_ltp.rs:11:8
+   |
+11 | pub fn run_ltp_suite_flat() {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: variable `AlreadyExists` should have a snake case name
+  --> src/ext4_vfs.rs:76:9
+   |
+76 |         AlreadyExists => VfsError::AlreadyExists,
+   |         ^^^^^^^^^^^^^ help: convert the identifier to snake case: `already_exists`
+   |
+   = note: `#[warn(non_snake_case)]` on by default
+
+warning: variable `InvalidInput` should have a snake case name
+  --> src/ext4_vfs.rs:79:9
+   |
+79 |         InvalidInput => VfsError::InvalidInput,
+   |         ^^^^^^^^^^^^ help: convert the identifier to snake case: `invalid_input`
+
+warning: `oscomp-runner` (bin "oscomp-runner") generated 144 warnings (run `cargo fix --bin "oscomp-runner"` to apply 25 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.08s
+[37mrust-objcopy --binary-architecture=riscv64[0m [90m/home/yuxing/rCore-Tutorial-v3/compat/oscomp-runner/oscomp-runner_riscv64-qemu-virt.elf --strip-all -O binary /home/yuxing/rCore-Tutorial-v3/compat/oscomp-runner/oscomp-runner_riscv64-qemu-virt.bin[0m
+make[2]: Leaving directory '/home/yuxing/rCore-Tutorial-v3/arceos'
+generated kernel-rv from /home/yuxing/rCore-Tutorial-v3/compat/oscomp-runner/oscomp-runner_riscv64-qemu-virt.elf
+make[1]: Leaving directory '/home/yuxing/rCore-Tutorial-v3'
+e_phoff=0x40, e_phentsize=56, e_phnum=12
+  PHDR 0: PhysAddr 0xffffffc080800000 -> 0x0000000080800000 (VirtAddr=0xffffffc080800000)
+  PHDR 1: PhysAddr 0xffffffc08085e000 -> 0x000000008085e000 (VirtAddr=0xffffffc08085e000)
+  PHDR 2: PhysAddr 0xffffffc080885000 -> 0x0000000080885000 (VirtAddr=0xffffffc080885000)
+  PHDR 3: PhysAddr 0xffffffc080887010 -> 0x0000000080887010 (VirtAddr=0xffffffc080887010)
+  PHDR 4: PhysAddr 0xffffffc080887018 -> 0x0000000080887018 (VirtAddr=0xffffffc080887018)
+  PHDR 5: PhysAddr 0xffffffc080887020 -> 0x0000000080887020 (VirtAddr=0xffffffc080887020)
+  PHDR 6: PhysAddr 0xffffffc080887028 -> 0x0000000080887028 (VirtAddr=0xffffffc080887028)
+  PHDR 7: PhysAddr 0xffffffc080888000 -> 0x0000000080888000 (VirtAddr=0x0000000000000000)
+  PHDR 8: PhysAddr 0xffffffc080889000 -> 0x0000000080889000 (VirtAddr=0xffffffc080889000)
+Entry point: 0xffffffc080800000 -> 0x0000000080800000
+Patched 10 items.
+Starting RISC-V QEMU...
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___ /_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080800000
+Domain0 Next Arg1         : 0x00000000bfe00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+build_mode = release
+log_level = info
+
+[37m[  0.023388 0 axruntime:135] [32mLogging is enabled.[m
+[m[37m[  0.024153 0 axruntime:136] [32mPrimary CPU 0 started, arg = 0xbfe00000.[m
+[m[37m[  0.024892 0 axruntime:139] [32mFound physcial memory regions:[m
+[m[37m[  0.025305 0 axruntime:141] [32m  [PA:0x101000, PA:0x102000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.026036 0 axruntime:141] [32m  [PA:0xc000000, PA:0xc210000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.026505 0 axruntime:141] [32m  [PA:0x10000000, PA:0x10001000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.026715 0 axruntime:141] [32m  [PA:0x10001000, PA:0x10009000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.026971 0 axruntime:141] [32m  [PA:0x30000000, PA:0x40000000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.027261 0 axruntime:141] [32m  [PA:0x40000000, PA:0x80000000) mmio (READ | WRITE | DEVICE | RESERVED)[m
+[m[37m[  0.027594 0 axruntime:141] [32m  [PA:0x80800000, PA:0x8085e000) .text (READ | EXECUTE | RESERVED)[m
+[m[37m[  0.027884 0 axruntime:141] [32m  [PA:0x8085e000, PA:0x80885000) .rodata (READ | RESERVED)[m
+[m[37m[  0.028073 0 axruntime:141] [32m  [PA:0x80885000, PA:0x80889000) .data .tdata .tbss .percpu (READ | WRITE | RESERVED)[m
+[m[37m[  0.028395 0 axruntime:141] [32m  [PA:0x80889000, PA:0x808c9000) boot stack (READ | WRITE | RESERVED)[m
+[m[37m[  0.028591 0 axruntime:141] [32m  [PA:0x808c9000, PA:0x808f2000) .bss (READ | WRITE | RESERVED)[m
+[m[37m[  0.028770 0 axruntime:141] [32m  [PA:0x808f2000, PA:0xc0000000) free memory (READ | WRITE | FREE)[m
+[m[37m[  0.029125 0 axruntime:216] [32mInitialize global memory allocator...[m
+[m[37m[  0.029429 0 axruntime:217] [32m  use TLSF allocator.[m
+[m[37m[  0.031377 0 axmm:103] [32mInitialize virtual memory management...[m
+[m[37m[  0.121800 0 axruntime:156] [32mInitialize platform devices...[m
+[msmp = 1
+[37m[  0.122532 0 axtask::api:80] [32mInitialize scheduling...[m
+[m[37m[  0.124870 0 axtask::api:90] [32m  use FIFO scheduler.[m
+[m[37m[  0.125248 0 axdriver:152] [32mInitialize device drivers...[m
+[m[37m[  0.125539 0 axdriver:153] [32m  device model: static[m
+[m[37m[  0.126254 0 virtio_drivers::device::blk:63] [32mfound a block device of size 4194304KB[m
+[m[37m[  0.126702 0 axdriver::virtio:149] [32m[VirtIoHal] dma_alloc: pages=2, vaddr=0xffffffc080e3e000, paddr=0x80e3e000, over_4gb=false[m
+[m[37m[  0.127569 0 axdriver::bus::mmio:11] [32mregistered a new Block device at [PA:0x10001000, PA:0x10002000): "virtio-blk"[m
+[m[37m[  0.128317 0 virtio_drivers::device::net::dev_raw:33] [32mnegotiated_features Features(MAC | STATUS | RING_INDIRECT_DESC | RING_EVENT_IDX)[m
+[m[37m[  0.129058 0 axdriver::virtio:149] [32m[VirtIoHal] dma_alloc: pages=2, vaddr=0xffffffc080e40000, paddr=0x80e40000, over_4gb=false[m
+[m[37m[  0.129525 0 axdriver::virtio:149] [32m[VirtIoHal] dma_alloc: pages=2, vaddr=0xffffffc080e42000, paddr=0x80e42000, over_4gb=false[m
+[m[37m[  0.130457 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2d53a, paddr=0x80e2d53a, len=1526[m
+[m[37m[  0.130920 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2cf44, paddr=0x80e2cf44, len=1526[m
+[m[37m[  0.131173 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2c94e, paddr=0x80e2c94e, len=1526[m
+[m[37m[  0.131483 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2c358, paddr=0x80e2c358, len=1526[m
+[m[37m[  0.131858 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2bd62, paddr=0x80e2bd62, len=1526[m
+[m[37m[  0.132200 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2b76c, paddr=0x80e2b76c, len=1526[m
+[m[37m[  0.132464 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2b176, paddr=0x80e2b176, len=1526[m
+[m[37m[  0.132768 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2ab80, paddr=0x80e2ab80, len=1526[m
+[m[37m[  0.133085 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2a58a, paddr=0x80e2a58a, len=1526[m
+[m[37m[  0.133515 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e29f94, paddr=0x80e29f94, len=1526[m
+[m[37m[  0.133853 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2999e, paddr=0x80e2999e, len=1526[m
+[m[37m[  0.134147 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e293a8, paddr=0x80e293a8, len=1526[m
+[m[37m[  0.134611 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e28db2, paddr=0x80e28db2, len=1526[m
+[m[37m[  0.134953 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e287bc, paddr=0x80e287bc, len=1526[m
+[m[37m[  0.135241 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e281c6, paddr=0x80e281c6, len=1526[m
+[m[37m[  0.135512 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e27bd0, paddr=0x80e27bd0, len=1526[m
+[m[37m[  0.135847 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e275da, paddr=0x80e275da, len=1526[m
+[m[37m[  0.136303 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e26fe4, paddr=0x80e26fe4, len=1526[m
+[m[37m[  0.136708 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e269ee, paddr=0x80e269ee, len=1526[m
+[m[37m[  0.137173 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e263f8, paddr=0x80e263f8, len=1526[m
+[m[37m[  0.137580 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e25e02, paddr=0x80e25e02, len=1526[m
+[m[37m[  0.138516 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2580c, paddr=0x80e2580c, len=1526[m
+[m[37m[  0.138790 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e25216, paddr=0x80e25216, len=1526[m
+[m[37m[  0.139266 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e24c20, paddr=0x80e24c20, len=1526[m
+[m[37m[  0.139781 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2462a, paddr=0x80e2462a, len=1526[m
+[m[37m[  0.140457 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e24034, paddr=0x80e24034, len=1526[m
+[m[37m[  0.140861 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e23a3e, paddr=0x80e23a3e, len=1526[m
+[m[37m[  0.141130 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e23448, paddr=0x80e23448, len=1526[m
+[m[37m[  0.141496 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e22e52, paddr=0x80e22e52, len=1526[m
+[m[37m[  0.141896 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2285c, paddr=0x80e2285c, len=1526[m
+[m[37m[  0.142230 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e22266, paddr=0x80e22266, len=1526[m
+[m[37m[  0.142617 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e21c70, paddr=0x80e21c70, len=1526[m
+[m[37m[  0.142931 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e2167a, paddr=0x80e2167a, len=1526[m
+[m[37m[  0.143258 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e21084, paddr=0x80e21084, len=1526[m
+[m[37m[  0.143729 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e20a8e, paddr=0x80e20a8e, len=1526[m
+[m[37m[  0.144150 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e20498, paddr=0x80e20498, len=1526[m
+[m[37m[  0.144494 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1fea2, paddr=0x80e1fea2, len=1526[m
+[m[37m[  0.145008 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1f8ac, paddr=0x80e1f8ac, len=1526[m
+[m[37m[  0.145332 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1f2b6, paddr=0x80e1f2b6, len=1526[m
+[m[37m[  0.145591 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1ecc0, paddr=0x80e1ecc0, len=1526[m
+[m[37m[  0.145943 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1e6ca, paddr=0x80e1e6ca, len=1526[m
+[m[37m[  0.146264 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1e0d4, paddr=0x80e1e0d4, len=1526[m
+[m[37m[  0.146634 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1dade, paddr=0x80e1dade, len=1526[m
+[m[37m[  0.146940 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1d4e8, paddr=0x80e1d4e8, len=1526[m
+[m[37m[  0.147235 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1cef2, paddr=0x80e1cef2, len=1526[m
+[m[37m[  0.147533 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1c8fc, paddr=0x80e1c8fc, len=1526[m
+[m[37m[  0.147931 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1c306, paddr=0x80e1c306, len=1526[m
+[m[37m[  0.148235 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1bd10, paddr=0x80e1bd10, len=1526[m
+[m[37m[  0.148588 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1b71a, paddr=0x80e1b71a, len=1526[m
+[m[37m[  0.148891 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1b124, paddr=0x80e1b124, len=1526[m
+[m[37m[  0.149241 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1ab2e, paddr=0x80e1ab2e, len=1526[m
+[m[37m[  0.149517 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1a538, paddr=0x80e1a538, len=1526[m
+[m[37m[  0.150128 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e19f42, paddr=0x80e19f42, len=1526[m
+[m[37m[  0.150526 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1994c, paddr=0x80e1994c, len=1526[m
+[m[37m[  0.150858 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e19356, paddr=0x80e19356, len=1526[m
+[m[37m[  0.151171 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e18d60, paddr=0x80e18d60, len=1526[m
+[m[37m[  0.151500 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1876a, paddr=0x80e1876a, len=1526[m
+[m[37m[  0.151821 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e18174, paddr=0x80e18174, len=1526[m
+[m[37m[  0.152287 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e17b7e, paddr=0x80e17b7e, len=1526[m
+[m[37m[  0.152581 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e17588, paddr=0x80e17588, len=1526[m
+[m[37m[  0.152855 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e16f92, paddr=0x80e16f92, len=1526[m
+[m[37m[  0.153196 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e1699c, paddr=0x80e1699c, len=1526[m
+[m[37m[  0.153550 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e163a6, paddr=0x80e163a6, len=1526[m
+[m[37m[  0.153837 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080e15db0, paddr=0x80e15db0, len=1526[m
+[m[37m[  0.154402 0 axdriver::bus::mmio:11] [32mregistered a new Net device at [PA:0x10008000, PA:0x10009000): "virtio-net"[m
+[m[37m[  0.154910 0 axfs:41] [32mInitialize filesystems...[m
+[m[37m[  0.155174 0 axfs:44] [32m  use block device 0: "virtio-blk"[m
+[m[myfs] loading ext4 filesystem from boot disk...
+[37m[  0.155873 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x400 (block 2), dst_len=1024, high_addr=false[m
+[m[37m[  0.156229 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x400 (block 2), filled=0/1024[m
+[m[37m[  0.156656 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5188, paddr=0x808c5188, len=16[m
+[m[37m[  0.156911 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f6550, paddr=0x808f6550, len=512[m
+[m[37m[  0.157159 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c519f, paddr=0x808c519f, len=1[m
+[m[37m[  0.157399 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f6970, paddr=0x808f6970, len=48[m
+[m[37m[  0.158560 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x400, read_one=512 bytes, filled=512/1024[m
+[m[37m[  0.158868 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #2: pos=0x600 (block 3), filled=512/1024[m
+[m[37m[  0.159079 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5188, paddr=0x808c5188, len=16[m
+[m[37m[  0.159566 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f6750, paddr=0x808f6750, len=512[m
+[m[37m[  0.159800 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c519f, paddr=0x808c519f, len=1[m
+[m[37m[  0.159994 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f6970, paddr=0x808f6970, len=48[m
+[m[37m[  0.160426 0 oscomp_runner::myfs:78] [32m[DiskReader] read #2: start_byte=0x400, read_one=512 bytes, filled=1024/1024[m
+[m[37m[  0.161767 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x400, total 1024 bytes, 2 reads[m
+[m[37m[  0.162989 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1000 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.163269 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1000 (block 8), filled=0/64[m
+[m[37m[  0.163678 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.164021 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.164312 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.164625 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.165386 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1000, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.165638 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1000, total 64 bytes, 1 reads[m
+[m[37m[  0.166121 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1040 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.166533 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1040 (block 8), filled=0/64[m
+[m[37m[  0.166856 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.167161 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.167377 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.167683 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.168410 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1040, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.168807 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1040, total 64 bytes, 1 reads[m
+[m[37m[  0.169016 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1080 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.169260 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1080 (block 8), filled=0/64[m
+[m[37m[  0.169490 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.169701 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.169964 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.170257 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.170726 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1080, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.170982 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1080, total 64 bytes, 1 reads[m
+[m[37m[  0.171196 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x10c0 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.171468 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x10c0 (block 8), filled=0/64[m
+[m[37m[  0.171723 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.171957 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.172209 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.172459 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.172937 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x10c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.173192 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x10c0, total 64 bytes, 1 reads[m
+[m[37m[  0.173402 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1100 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.173646 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1100 (block 8), filled=0/64[m
+[m[37m[  0.173873 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.174154 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.174456 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.174669 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.175209 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1100, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.175583 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1100, total 64 bytes, 1 reads[m
+[m[37m[  0.175794 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1140 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.176016 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1140 (block 8), filled=0/64[m
+[m[37m[  0.176251 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.176629 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.176896 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.177163 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.177632 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1140, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.177941 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1140, total 64 bytes, 1 reads[m
+[m[37m[  0.178173 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1180 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.178420 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1180 (block 8), filled=0/64[m
+[m[37m[  0.178664 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.178902 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.179148 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.179401 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.179933 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1180, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.180187 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1180, total 64 bytes, 1 reads[m
+[m[37m[  0.180411 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x11c0 (block 8), dst_len=64, high_addr=false[m
+[m[37m[  0.180748 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x11c0 (block 8), filled=0/64[m
+[m[37m[  0.181171 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.181448 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.181674 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.181932 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.182393 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x11c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.182639 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x11c0, total 64 bytes, 1 reads[m
+[m[37m[  0.183119 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1200 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.183730 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1200 (block 9), filled=0/64[m
+[m[37m[  0.184107 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.184515 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.184935 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.185357 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.185979 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1200, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.186676 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1200, total 64 bytes, 1 reads[m
+[m[37m[  0.187109 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1240 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.187660 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1240 (block 9), filled=0/64[m
+[m[37m[  0.188066 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.188274 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.188487 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.188709 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.189159 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1240, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.189406 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1240, total 64 bytes, 1 reads[m
+[m[37m[  0.189614 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1280 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.189826 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1280 (block 9), filled=0/64[m
+[m[37m[  0.190035 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.190240 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.190454 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.190752 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.191324 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1280, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.191575 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1280, total 64 bytes, 1 reads[m
+[m[37m[  0.191804 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x12c0 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.192029 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x12c0 (block 9), filled=0/64[m
+[m[37m[  0.192257 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.192564 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.192769 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.192968 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.193516 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x12c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.193766 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x12c0, total 64 bytes, 1 reads[m
+[m[37m[  0.194016 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1300 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.194237 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1300 (block 9), filled=0/64[m
+[m[37m[  0.194456 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.194684 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.194915 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.195173 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.195685 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1300, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.195996 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1300, total 64 bytes, 1 reads[m
+[m[37m[  0.196200 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1340 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.196409 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1340 (block 9), filled=0/64[m
+[m[37m[  0.196615 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.196813 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.197008 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.197201 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.197561 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1340, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.197810 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1340, total 64 bytes, 1 reads[m
+[m[37m[  0.198015 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1380 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.198294 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1380 (block 9), filled=0/64[m
+[m[37m[  0.198563 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.198779 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.198991 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.199267 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.200013 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1380, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.200381 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1380, total 64 bytes, 1 reads[m
+[m[37m[  0.200610 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x13c0 (block 9), dst_len=64, high_addr=false[m
+[m[37m[  0.200886 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x13c0 (block 9), filled=0/64[m
+[m[37m[  0.201111 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.201314 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.201513 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.201712 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.202031 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x13c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.202284 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x13c0, total 64 bytes, 1 reads[m
+[m[37m[  0.202528 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1400 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.202785 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1400 (block 10), filled=0/64[m
+[m[37m[  0.202994 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.203215 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.203551 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.203956 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.204441 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1400, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.204691 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1400, total 64 bytes, 1 reads[m
+[m[37m[  0.204973 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1440 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.205344 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1440 (block 10), filled=0/64[m
+[m[37m[  0.205602 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.205806 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.206001 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.206197 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.206626 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1440, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.206879 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1440, total 64 bytes, 1 reads[m
+[m[37m[  0.207106 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1480 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.207340 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1480 (block 10), filled=0/64[m
+[m[37m[  0.207652 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.207895 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.208154 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.208377 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.208764 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1480, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.209026 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1480, total 64 bytes, 1 reads[m
+[m[37m[  0.209288 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x14c0 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.209559 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x14c0 (block 10), filled=0/64[m
+[m[37m[  0.209863 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.210196 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.210684 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.210880 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.211227 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x14c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.211530 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x14c0, total 64 bytes, 1 reads[m
+[m[37m[  0.211739 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1500 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.211952 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1500 (block 10), filled=0/64[m
+[m[37m[  0.212159 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.212362 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.212614 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.212865 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.213222 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1500, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.213516 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1500, total 64 bytes, 1 reads[m
+[m[37m[  0.213797 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1540 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.214106 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1540 (block 10), filled=0/64[m
+[m[37m[  0.214522 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.214805 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.215095 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.215449 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.216121 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1540, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.216392 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1540, total 64 bytes, 1 reads[m
+[m[37m[  0.216636 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1580 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.216869 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1580 (block 10), filled=0/64[m
+[m[37m[  0.217093 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.217298 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.217531 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.217749 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.218291 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1580, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.218550 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1580, total 64 bytes, 1 reads[m
+[m[37m[  0.218772 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x15c0 (block 10), dst_len=64, high_addr=false[m
+[m[37m[  0.219000 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x15c0 (block 10), filled=0/64[m
+[m[37m[  0.219245 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.219525 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.219762 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.220056 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.220479 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x15c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.220741 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x15c0, total 64 bytes, 1 reads[m
+[m[37m[  0.221009 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1600 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.221244 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1600 (block 11), filled=0/64[m
+[m[37m[  0.221490 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.221748 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.221953 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.222175 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.222488 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1600, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.222723 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1600, total 64 bytes, 1 reads[m
+[m[37m[  0.222942 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1640 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.223193 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1640 (block 11), filled=0/64[m
+[m[37m[  0.223509 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.223746 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.224090 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.224312 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.224687 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1640, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.225260 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1640, total 64 bytes, 1 reads[m
+[m[37m[  0.225678 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1680 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.226038 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1680 (block 11), filled=0/64[m
+[m[37m[  0.226251 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.226452 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.226649 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.227006 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.228144 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1680, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.228791 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1680, total 64 bytes, 1 reads[m
+[m[37m[  0.229102 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x16c0 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.229370 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x16c0 (block 11), filled=0/64[m
+[m[37m[  0.229586 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.229823 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.230049 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.230250 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.230605 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x16c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.230872 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x16c0, total 64 bytes, 1 reads[m
+[m[37m[  0.231080 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1700 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.231331 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1700 (block 11), filled=0/64[m
+[m[37m[  0.231597 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.231833 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.232076 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.232331 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.232712 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1700, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.233009 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1700, total 64 bytes, 1 reads[m
+[m[37m[  0.233249 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1740 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.233522 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1740 (block 11), filled=0/64[m
+[m[37m[  0.233817 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.234131 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.234415 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.234667 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.235082 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1740, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.235390 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1740, total 64 bytes, 1 reads[m
+[m[37m[  0.235624 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x1780 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.235855 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x1780 (block 11), filled=0/64[m
+[m[37m[  0.236081 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.236309 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.236526 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.236761 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.237300 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x1780, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.237674 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x1780, total 64 bytes, 1 reads[m
+[m[37m[  0.238058 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x17c0 (block 11), dst_len=64, high_addr=false[m
+[m[37m[  0.238355 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x17c0 (block 11), filled=0/64[m
+[m[37m[  0.238645 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c5088, paddr=0x808c5088, len=16[m
+[m[37m[  0.238871 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c50d8, paddr=0x808c50d8, len=512[m
+[m[37m[  0.239240 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c509f, paddr=0x808c509f, len=1[m
+[m[37m[  0.239605 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f8fd0, paddr=0x808f8fd0, len=48[m
+[m[37m[  0.240262 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x17c0, read_one=64 bytes, filled=64/64[m
+[m[37m[  0.240551 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x17c0, total 64 bytes, 1 reads[m
+[m[myfs] ext4 filesystem loaded successfully
+[37m[  0.242322 0 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/, component=dev, child_path=/dev[m
+[m[37m[  0.243011 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x221000 (block 4360), dst_len=32768, high_addr=false[m
+[m[37m[  0.243267 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x221000 (block 4360), filled=0/32768[m
+[m[37m[  0.243601 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.243835 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac5d0, paddr=0x80dac5d0, len=512[m
+[m[37m[  0.244040 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.244304 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.244989 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x221000, read_one=512 bytes, filled=512/32768[m
+[m[37m[  0.245369 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #2: pos=0x221200 (block 4361), filled=512/32768[m
+[m[37m[  0.245889 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.246108 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac7d0, paddr=0x80dac7d0, len=512[m
+[m[37m[  0.246345 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.246560 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.246905 0 oscomp_runner::myfs:78] [32m[DiskReader] read #2: start_byte=0x221000, read_one=512 bytes, filled=1024/32768[m
+[m[37m[  0.247163 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #3: pos=0x221400 (block 4362), filled=1024/32768[m
+[m[37m[  0.247557 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.247925 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac9d0, paddr=0x80dac9d0, len=512[m
+[m[37m[  0.248192 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.248412 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.248850 0 oscomp_runner::myfs:78] [32m[DiskReader] read #3: start_byte=0x221000, read_one=512 bytes, filled=1536/32768[m
+[m[37m[  0.249135 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #4: pos=0x221600 (block 4363), filled=1536/32768[m
+[m[37m[  0.249356 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.249567 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacbd0, paddr=0x80dacbd0, len=512[m
+[m[37m[  0.249770 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.249975 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.250394 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #5: pos=0x221800 (block 4364), filled=2048/32768[m
+[m[37m[  0.250698 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.250905 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacdd0, paddr=0x80dacdd0, len=512[m
+[m[37m[  0.251169 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.251393 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.251760 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #6: pos=0x221a00 (block 4365), filled=2560/32768[m
+[m[37m[  0.252377 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.252787 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacfd0, paddr=0x80dacfd0, len=512[m
+[m[37m[  0.253010 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.253224 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.253555 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #7: pos=0x221c00 (block 4366), filled=3072/32768[m
+[m[37m[  0.253838 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.254037 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad1d0, paddr=0x80dad1d0, len=512[m
+[m[37m[  0.254275 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.254494 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.254907 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #8: pos=0x221e00 (block 4367), filled=3584/32768[m
+[m[37m[  0.255523 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.255801 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad3d0, paddr=0x80dad3d0, len=512[m
+[m[37m[  0.256157 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.256355 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.256834 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #9: pos=0x222000 (block 4368), filled=4096/32768[m
+[m[37m[  0.257100 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.257378 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad5d0, paddr=0x80dad5d0, len=512[m
+[m[37m[  0.257619 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.257825 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.258485 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #10: pos=0x222200 (block 4369), filled=4608/32768[m
+[m[37m[  0.258744 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.258965 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad7d0, paddr=0x80dad7d0, len=512[m
+[m[37m[  0.259280 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.259602 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.260001 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #11: pos=0x222400 (block 4370), filled=5120/32768[m
+[m[37m[  0.260285 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.260521 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad9d0, paddr=0x80dad9d0, len=512[m
+[m[37m[  0.260788 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.261120 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.261610 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #12: pos=0x222600 (block 4371), filled=5632/32768[m
+[m[37m[  0.261939 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.262198 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dadbd0, paddr=0x80dadbd0, len=512[m
+[m[37m[  0.262423 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.262697 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.263228 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #13: pos=0x222800 (block 4372), filled=6144/32768[m
+[m[37m[  0.264194 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.264921 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daddd0, paddr=0x80daddd0, len=512[m
+[m[37m[  0.265246 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.265450 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.265858 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #14: pos=0x222a00 (block 4373), filled=6656/32768[m
+[m[37m[  0.266614 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.266846 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dadfd0, paddr=0x80dadfd0, len=512[m
+[m[37m[  0.267041 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.267236 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.267630 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #15: pos=0x222c00 (block 4374), filled=7168/32768[m
+[m[37m[  0.267901 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.268107 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae1d0, paddr=0x80dae1d0, len=512[m
+[m[37m[  0.268331 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.268608 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.269049 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #16: pos=0x222e00 (block 4375), filled=7680/32768[m
+[m[37m[  0.269338 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.269552 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae3d0, paddr=0x80dae3d0, len=512[m
+[m[37m[  0.269749 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.269944 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.270349 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #17: pos=0x223000 (block 4376), filled=8192/32768[m
+[m[37m[  0.270657 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.270950 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae5d0, paddr=0x80dae5d0, len=512[m
+[m[37m[  0.271236 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.271482 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.271950 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #18: pos=0x223200 (block 4377), filled=8704/32768[m
+[m[37m[  0.272242 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.272464 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae7d0, paddr=0x80dae7d0, len=512[m
+[m[37m[  0.272697 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.272915 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.273249 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #19: pos=0x223400 (block 4378), filled=9216/32768[m
+[m[37m[  0.273521 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.273751 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae9d0, paddr=0x80dae9d0, len=512[m
+[m[37m[  0.273962 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.274183 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.274494 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #20: pos=0x223600 (block 4379), filled=9728/32768[m
+[m[37m[  0.274788 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.275037 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daebd0, paddr=0x80daebd0, len=512[m
+[m[37m[  0.275234 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.275440 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.276059 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #21: pos=0x223800 (block 4380), filled=10240/32768[m
+[m[37m[  0.276352 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.276604 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daedd0, paddr=0x80daedd0, len=512[m
+[m[37m[  0.276804 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.277026 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.277372 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #22: pos=0x223a00 (block 4381), filled=10752/32768[m
+[m[37m[  0.277624 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.277844 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daefd0, paddr=0x80daefd0, len=512[m
+[m[37m[  0.278038 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.278233 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.278632 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #23: pos=0x223c00 (block 4382), filled=11264/32768[m
+[m[37m[  0.278930 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.279187 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf1d0, paddr=0x80daf1d0, len=512[m
+[m[37m[  0.279409 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.279657 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.280088 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #24: pos=0x223e00 (block 4383), filled=11776/32768[m
+[m[37m[  0.280361 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.280601 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf3d0, paddr=0x80daf3d0, len=512[m
+[m[37m[  0.280837 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.281058 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.281350 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #25: pos=0x224000 (block 4384), filled=12288/32768[m
+[m[37m[  0.281625 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.281830 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf5d0, paddr=0x80daf5d0, len=512[m
+[m[37m[  0.282063 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.282294 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.282705 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #26: pos=0x224200 (block 4385), filled=12800/32768[m
+[m[37m[  0.282977 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.283208 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf7d0, paddr=0x80daf7d0, len=512[m
+[m[37m[  0.283431 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.283699 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.284091 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #27: pos=0x224400 (block 4386), filled=13312/32768[m
+[m[37m[  0.284382 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.284587 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf9d0, paddr=0x80daf9d0, len=512[m
+[m[37m[  0.284831 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.285065 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.285476 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #28: pos=0x224600 (block 4387), filled=13824/32768[m
+[m[37m[  0.285987 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.286201 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dafbd0, paddr=0x80dafbd0, len=512[m
+[m[37m[  0.286403 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.286612 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.287067 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #29: pos=0x224800 (block 4388), filled=14336/32768[m
+[m[37m[  0.287541 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.287787 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dafdd0, paddr=0x80dafdd0, len=512[m
+[m[37m[  0.288006 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.288247 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.288581 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #30: pos=0x224a00 (block 4389), filled=14848/32768[m
+[m[37m[  0.288824 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.289041 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daffd0, paddr=0x80daffd0, len=512[m
+[m[37m[  0.289247 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.289477 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.289781 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #31: pos=0x224c00 (block 4390), filled=15360/32768[m
+[m[37m[  0.290042 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.290302 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db01d0, paddr=0x80db01d0, len=512[m
+[m[37m[  0.290546 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.290754 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.291069 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #32: pos=0x224e00 (block 4391), filled=15872/32768[m
+[m[37m[  0.291326 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.291589 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db03d0, paddr=0x80db03d0, len=512[m
+[m[37m[  0.292068 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.292350 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.292668 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #33: pos=0x225000 (block 4392), filled=16384/32768[m
+[m[37m[  0.293504 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.293989 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db05d0, paddr=0x80db05d0, len=512[m
+[m[37m[  0.294247 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.294440 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.294902 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #34: pos=0x225200 (block 4393), filled=16896/32768[m
+[m[37m[  0.295224 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.295512 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db07d0, paddr=0x80db07d0, len=512[m
+[m[37m[  0.295714 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.295908 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.296224 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #35: pos=0x225400 (block 4394), filled=17408/32768[m
+[m[37m[  0.296531 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.296889 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db09d0, paddr=0x80db09d0, len=512[m
+[m[37m[  0.297085 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.297298 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.297754 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #36: pos=0x225600 (block 4395), filled=17920/32768[m
+[m[37m[  0.298004 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.298235 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0bd0, paddr=0x80db0bd0, len=512[m
+[m[37m[  0.298454 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.298916 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.299541 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #37: pos=0x225800 (block 4396), filled=18432/32768[m
+[m[37m[  0.299861 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.300063 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0dd0, paddr=0x80db0dd0, len=512[m
+[m[37m[  0.300285 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.300510 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.300848 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #38: pos=0x225a00 (block 4397), filled=18944/32768[m
+[m[37m[  0.301108 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.301343 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0fd0, paddr=0x80db0fd0, len=512[m
+[m[37m[  0.301563 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.301796 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.302098 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #39: pos=0x225c00 (block 4398), filled=19456/32768[m
+[m[37m[  0.302358 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.302574 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db11d0, paddr=0x80db11d0, len=512[m
+[m[37m[  0.302777 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.302992 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.303289 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #40: pos=0x225e00 (block 4399), filled=19968/32768[m
+[m[37m[  0.303586 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.303781 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db13d0, paddr=0x80db13d0, len=512[m
+[m[37m[  0.303978 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.304243 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.304651 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #41: pos=0x226000 (block 4400), filled=20480/32768[m
+[m[37m[  0.304915 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.305122 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db15d0, paddr=0x80db15d0, len=512[m
+[m[37m[  0.305328 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.305533 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.305897 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #42: pos=0x226200 (block 4401), filled=20992/32768[m
+[m[37m[  0.306205 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.306473 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db17d0, paddr=0x80db17d0, len=512[m
+[m[37m[  0.306679 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.306887 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.307338 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #43: pos=0x226400 (block 4402), filled=21504/32768[m
+[m[37m[  0.307844 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.308052 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db19d0, paddr=0x80db19d0, len=512[m
+[m[37m[  0.308325 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.308545 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.308873 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #44: pos=0x226600 (block 4403), filled=22016/32768[m
+[m[37m[  0.309153 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.309373 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1bd0, paddr=0x80db1bd0, len=512[m
+[m[37m[  0.309603 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.309902 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.310236 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #45: pos=0x226800 (block 4404), filled=22528/32768[m
+[m[37m[  0.310538 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.310737 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1dd0, paddr=0x80db1dd0, len=512[m
+[m[37m[  0.310942 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.311137 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.311456 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #46: pos=0x226a00 (block 4405), filled=23040/32768[m
+[m[37m[  0.311710 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.311959 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1fd0, paddr=0x80db1fd0, len=512[m
+[m[37m[  0.312183 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.312434 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.312772 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #47: pos=0x226c00 (block 4406), filled=23552/32768[m
+[m[37m[  0.313060 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.313306 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db21d0, paddr=0x80db21d0, len=512[m
+[m[37m[  0.313568 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.313835 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.314128 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #48: pos=0x226e00 (block 4407), filled=24064/32768[m
+[m[37m[  0.314397 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.314613 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db23d0, paddr=0x80db23d0, len=512[m
+[m[37m[  0.314849 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.315097 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.315472 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #49: pos=0x227000 (block 4408), filled=24576/32768[m
+[m[37m[  0.315748 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.315967 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db25d0, paddr=0x80db25d0, len=512[m
+[m[37m[  0.316221 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.316437 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.316746 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #50: pos=0x227200 (block 4409), filled=25088/32768[m
+[m[37m[  0.317014 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.317227 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db27d0, paddr=0x80db27d0, len=512[m
+[m[37m[  0.317479 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.317721 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.318070 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #51: pos=0x227400 (block 4410), filled=25600/32768[m
+[m[37m[  0.318334 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.318572 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db29d0, paddr=0x80db29d0, len=512[m
+[m[37m[  0.318816 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.319037 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.319411 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #52: pos=0x227600 (block 4411), filled=26112/32768[m
+[m[37m[  0.319776 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.320171 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2bd0, paddr=0x80db2bd0, len=512[m
+[m[37m[  0.320936 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.321304 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.321644 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #53: pos=0x227800 (block 4412), filled=26624/32768[m
+[m[37m[  0.322348 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.322546 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2dd0, paddr=0x80db2dd0, len=512[m
+[m[37m[  0.322749 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.322950 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.323312 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #54: pos=0x227a00 (block 4413), filled=27136/32768[m
+[m[37m[  0.324036 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.324239 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2fd0, paddr=0x80db2fd0, len=512[m
+[m[37m[  0.324502 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.324697 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.325145 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #55: pos=0x227c00 (block 4414), filled=27648/32768[m
+[m[37m[  0.325502 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.325717 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db31d0, paddr=0x80db31d0, len=512[m
+[m[37m[  0.325916 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.326121 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.326473 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #56: pos=0x227e00 (block 4415), filled=28160/32768[m
+[m[37m[  0.326751 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.327022 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db33d0, paddr=0x80db33d0, len=512[m
+[m[37m[  0.327220 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.327457 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.327801 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #57: pos=0x228000 (block 4416), filled=28672/32768[m
+[m[37m[  0.328058 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.328266 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db35d0, paddr=0x80db35d0, len=512[m
+[m[37m[  0.328465 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.328708 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.329038 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #58: pos=0x228200 (block 4417), filled=29184/32768[m
+[m[37m[  0.329365 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.329634 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db37d0, paddr=0x80db37d0, len=512[m
+[m[37m[  0.329864 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.330087 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.330391 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #59: pos=0x228400 (block 4418), filled=29696/32768[m
+[m[37m[  0.330656 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.330889 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db39d0, paddr=0x80db39d0, len=512[m
+[m[37m[  0.331125 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.331376 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.331683 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #60: pos=0x228600 (block 4419), filled=30208/32768[m
+[m[37m[  0.331950 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.332172 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3bd0, paddr=0x80db3bd0, len=512[m
+[m[37m[  0.332406 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.332636 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.332910 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #61: pos=0x228800 (block 4420), filled=30720/32768[m
+[m[37m[  0.333189 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.333393 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3dd0, paddr=0x80db3dd0, len=512[m
+[m[37m[  0.333627 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.333912 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.334347 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #62: pos=0x228a00 (block 4421), filled=31232/32768[m
+[m[37m[  0.334619 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.334857 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3fd0, paddr=0x80db3fd0, len=512[m
+[m[37m[  0.335114 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.335354 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.335908 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #63: pos=0x228c00 (block 4422), filled=31744/32768[m
+[m[37m[  0.336165 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.336364 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db41d0, paddr=0x80db41d0, len=512[m
+[m[37m[  0.336608 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.336842 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.337288 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #64: pos=0x228e00 (block 4423), filled=32256/32768[m
+[m[37m[  0.337545 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e28, paddr=0x808c4e28, len=16[m
+[m[37m[  0.337776 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db43d0, paddr=0x80db43d0, len=512[m
+[m[37m[  0.338026 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4e3f, paddr=0x808c4e3f, len=1[m
+[m[37m[  0.338228 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f68f0, paddr=0x808f68f0, len=48[m
+[m[37m[  0.338511 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x221000, total 32768 bytes, 64 reads[m
+[m[37m[  0.339910 0 oscomp_runner::myfs:57] [32m[DiskReader] read: start_byte=0x2221000 (block 69896), dst_len=32768, high_addr=false[m
+[m[37m[  0.340224 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #1: pos=0x2221000 (block 69896), filled=0/32768[m
+[m[37m[  0.340560 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.340771 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac5d0, paddr=0x80dac5d0, len=512[m
+[m[37m[  0.341142 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.341498 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.342117 0 oscomp_runner::myfs:78] [32m[DiskReader] read #1: start_byte=0x2221000, read_one=512 bytes, filled=512/32768[m
+[m[37m[  0.342461 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #2: pos=0x2221200 (block 69897), filled=512/32768[m
+[m[37m[  0.342714 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.342919 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac7d0, paddr=0x80dac7d0, len=512[m
+[m[37m[  0.343195 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.343428 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.343862 0 oscomp_runner::myfs:78] [32m[DiskReader] read #2: start_byte=0x2221000, read_one=512 bytes, filled=1024/32768[m
+[m[37m[  0.344147 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #3: pos=0x2221400 (block 69898), filled=1024/32768[m
+[m[37m[  0.344416 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.344671 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dac9d0, paddr=0x80dac9d0, len=512[m
+[m[37m[  0.344912 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.345154 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.345466 0 oscomp_runner::myfs:78] [32m[DiskReader] read #3: start_byte=0x2221000, read_one=512 bytes, filled=1536/32768[m
+[m[37m[  0.345711 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #4: pos=0x2221600 (block 69899), filled=1536/32768[m
+[m[37m[  0.345984 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.346188 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacbd0, paddr=0x80dacbd0, len=512[m
+[m[37m[  0.346414 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.346637 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.346983 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #5: pos=0x2221800 (block 69900), filled=2048/32768[m
+[m[37m[  0.347246 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.347477 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacdd0, paddr=0x80dacdd0, len=512[m
+[m[37m[  0.347718 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.347961 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.348378 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #6: pos=0x2221a00 (block 69901), filled=2560/32768[m
+[m[37m[  0.348679 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.348886 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dacfd0, paddr=0x80dacfd0, len=512[m
+[m[37m[  0.349109 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.349350 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.349912 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #7: pos=0x2221c00 (block 69902), filled=3072/32768[m
+[m[37m[  0.350212 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.350408 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad1d0, paddr=0x80dad1d0, len=512[m
+[m[37m[  0.350607 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.350848 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.351190 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #8: pos=0x2221e00 (block 69903), filled=3584/32768[m
+[m[37m[  0.351525 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.351747 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad3d0, paddr=0x80dad3d0, len=512[m
+[m[37m[  0.351950 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.352190 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.352499 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #9: pos=0x2222000 (block 69904), filled=4096/32768[m
+[m[37m[  0.352780 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.353004 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad5d0, paddr=0x80dad5d0, len=512[m
+[m[37m[  0.353220 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.353680 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.354422 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #10: pos=0x2222200 (block 69905), filled=4608/32768[m
+[m[37m[  0.354809 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.355006 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad7d0, paddr=0x80dad7d0, len=512[m
+[m[37m[  0.355382 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.355892 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.356488 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #11: pos=0x2222400 (block 69906), filled=5120/32768[m
+[m[37m[  0.356863 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.357246 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dad9d0, paddr=0x80dad9d0, len=512[m
+[m[37m[  0.357581 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.357984 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.358292 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #12: pos=0x2222600 (block 69907), filled=5632/32768[m
+[m[37m[  0.358564 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.358772 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dadbd0, paddr=0x80dadbd0, len=512[m
+[m[37m[  0.359025 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.359270 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.359806 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #13: pos=0x2222800 (block 69908), filled=6144/32768[m
+[m[37m[  0.360101 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.360327 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daddd0, paddr=0x80daddd0, len=512[m
+[m[37m[  0.360554 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.360783 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.361114 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #14: pos=0x2222a00 (block 69909), filled=6656/32768[m
+[m[37m[  0.361368 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.361601 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dadfd0, paddr=0x80dadfd0, len=512[m
+[m[37m[  0.361825 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.362080 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.362350 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #15: pos=0x2222c00 (block 69910), filled=7168/32768[m
+[m[37m[  0.362597 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.362816 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae1d0, paddr=0x80dae1d0, len=512[m
+[m[37m[  0.363038 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.363254 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.363591 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #16: pos=0x2222e00 (block 69911), filled=7680/32768[m
+[m[37m[  0.363863 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.364154 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae3d0, paddr=0x80dae3d0, len=512[m
+[m[37m[  0.364395 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.364652 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.365011 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #17: pos=0x2223000 (block 69912), filled=8192/32768[m
+[m[37m[  0.365322 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.365553 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae5d0, paddr=0x80dae5d0, len=512[m
+[m[37m[  0.365809 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.366061 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.366438 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #18: pos=0x2223200 (block 69913), filled=8704/32768[m
+[m[37m[  0.366703 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.366925 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae7d0, paddr=0x80dae7d0, len=512[m
+[m[37m[  0.367168 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.367438 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.367850 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #19: pos=0x2223400 (block 69914), filled=9216/32768[m
+[m[37m[  0.368704 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.369237 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dae9d0, paddr=0x80dae9d0, len=512[m
+[m[37m[  0.369674 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.370103 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.370653 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #20: pos=0x2223600 (block 69915), filled=9728/32768[m
+[m[37m[  0.371422 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.371659 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daebd0, paddr=0x80daebd0, len=512[m
+[m[37m[  0.371865 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.372064 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.372420 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #21: pos=0x2223800 (block 69916), filled=10240/32768[m
+[m[37m[  0.372698 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.372932 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daedd0, paddr=0x80daedd0, len=512[m
+[m[37m[  0.373210 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.373409 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.373853 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #22: pos=0x2223a00 (block 69917), filled=10752/32768[m
+[m[37m[  0.374100 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.374363 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daefd0, paddr=0x80daefd0, len=512[m
+[m[37m[  0.374570 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.374784 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.375295 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #23: pos=0x2223c00 (block 69918), filled=11264/32768[m
+[m[37m[  0.375568 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.375799 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf1d0, paddr=0x80daf1d0, len=512[m
+[m[37m[  0.376037 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.376236 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.376538 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #24: pos=0x2223e00 (block 69919), filled=11776/32768[m
+[m[37m[  0.376829 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.377050 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf3d0, paddr=0x80daf3d0, len=512[m
+[m[37m[  0.377486 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.377700 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.378192 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #25: pos=0x2224000 (block 69920), filled=12288/32768[m
+[m[37m[  0.378727 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.379059 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf5d0, paddr=0x80daf5d0, len=512[m
+[m[37m[  0.379490 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.379772 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.380155 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #26: pos=0x2224200 (block 69921), filled=12800/32768[m
+[m[37m[  0.380635 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.380839 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf7d0, paddr=0x80daf7d0, len=512[m
+[m[37m[  0.381113 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.381328 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.381713 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #27: pos=0x2224400 (block 69922), filled=13312/32768[m
+[m[37m[  0.382049 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.382282 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daf9d0, paddr=0x80daf9d0, len=512[m
+[m[37m[  0.382510 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.382740 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.383024 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #28: pos=0x2224600 (block 69923), filled=13824/32768[m
+[m[37m[  0.383269 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.383564 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dafbd0, paddr=0x80dafbd0, len=512[m
+[m[37m[  0.383765 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.384070 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.384486 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #29: pos=0x2224800 (block 69924), filled=14336/32768[m
+[m[37m[  0.384833 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.385126 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080dafdd0, paddr=0x80dafdd0, len=512[m
+[m[37m[  0.385432 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.385644 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.385993 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #30: pos=0x2224a00 (block 69925), filled=14848/32768[m
+[m[37m[  0.386291 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.386536 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080daffd0, paddr=0x80daffd0, len=512[m
+[m[37m[  0.386757 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.386989 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.387307 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #31: pos=0x2224c00 (block 69926), filled=15360/32768[m
+[m[37m[  0.387591 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.387923 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db01d0, paddr=0x80db01d0, len=512[m
+[m[37m[  0.388515 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.389055 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.390397 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #32: pos=0x2224e00 (block 69927), filled=15872/32768[m
+[m[37m[  0.390685 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.390878 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db03d0, paddr=0x80db03d0, len=512[m
+[m[37m[  0.391072 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.391287 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.391636 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #33: pos=0x2225000 (block 69928), filled=16384/32768[m
+[m[37m[  0.392447 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.392971 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db05d0, paddr=0x80db05d0, len=512[m
+[m[37m[  0.393169 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.393375 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.393717 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #34: pos=0x2225200 (block 69929), filled=16896/32768[m
+[m[37m[  0.394617 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.394888 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db07d0, paddr=0x80db07d0, len=512[m
+[m[37m[  0.395164 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.395375 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.395807 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #35: pos=0x2225400 (block 69930), filled=17408/32768[m
+[m[37m[  0.396094 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.396364 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db09d0, paddr=0x80db09d0, len=512[m
+[m[37m[  0.396585 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.396863 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.397450 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #36: pos=0x2225600 (block 69931), filled=17920/32768[m
+[m[37m[  0.397811 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.398012 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0bd0, paddr=0x80db0bd0, len=512[m
+[m[37m[  0.398207 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.398439 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.399226 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #37: pos=0x2225800 (block 69932), filled=18432/32768[m
+[m[37m[  0.399488 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.399765 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0dd0, paddr=0x80db0dd0, len=512[m
+[m[37m[  0.400071 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.400343 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.400820 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #38: pos=0x2225a00 (block 69933), filled=18944/32768[m
+[m[37m[  0.401147 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.401390 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db0fd0, paddr=0x80db0fd0, len=512[m
+[m[37m[  0.401629 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.401851 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.402304 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #39: pos=0x2225c00 (block 69934), filled=19456/32768[m
+[m[37m[  0.402576 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.402843 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db11d0, paddr=0x80db11d0, len=512[m
+[m[37m[  0.403048 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.403264 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.403585 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #40: pos=0x2225e00 (block 69935), filled=19968/32768[m
+[m[37m[  0.403835 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.404055 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db13d0, paddr=0x80db13d0, len=512[m
+[m[37m[  0.404289 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.404487 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.404778 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #41: pos=0x2226000 (block 69936), filled=20480/32768[m
+[m[37m[  0.405064 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.405673 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db15d0, paddr=0x80db15d0, len=512[m
+[m[37m[  0.406233 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.406698 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.407263 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #42: pos=0x2226200 (block 69937), filled=20992/32768[m
+[m[37m[  0.407577 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.407789 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db17d0, paddr=0x80db17d0, len=512[m
+[m[37m[  0.408044 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.408245 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.408650 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #43: pos=0x2226400 (block 69938), filled=21504/32768[m
+[m[37m[  0.408923 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.409155 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db19d0, paddr=0x80db19d0, len=512[m
+[m[37m[  0.409373 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.409579 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.409982 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #44: pos=0x2226600 (block 69939), filled=22016/32768[m
+[m[37m[  0.410279 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.410508 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1bd0, paddr=0x80db1bd0, len=512[m
+[m[37m[  0.410770 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.411071 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.411424 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #45: pos=0x2226800 (block 69940), filled=22528/32768[m
+[m[37m[  0.411690 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.411906 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1dd0, paddr=0x80db1dd0, len=512[m
+[m[37m[  0.412183 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.412466 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.412812 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #46: pos=0x2226a00 (block 69941), filled=23040/32768[m
+[m[37m[  0.413073 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.413294 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db1fd0, paddr=0x80db1fd0, len=512[m
+[m[37m[  0.413531 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.413731 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.414211 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #47: pos=0x2226c00 (block 69942), filled=23552/32768[m
+[m[37m[  0.415123 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.416144 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db21d0, paddr=0x80db21d0, len=512[m
+[m[37m[  0.416376 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.416593 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.416958 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #48: pos=0x2226e00 (block 69943), filled=24064/32768[m
+[m[37m[  0.417235 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.417452 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db23d0, paddr=0x80db23d0, len=512[m
+[m[37m[  0.417702 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.417951 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.418352 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #49: pos=0x2227000 (block 69944), filled=24576/32768[m
+[m[37m[  0.418645 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.418908 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db25d0, paddr=0x80db25d0, len=512[m
+[m[37m[  0.419158 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.419618 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.420113 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #50: pos=0x2227200 (block 69945), filled=25088/32768[m
+[m[37m[  0.420375 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.420652 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db27d0, paddr=0x80db27d0, len=512[m
+[m[37m[  0.420877 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.421139 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.421809 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #51: pos=0x2227400 (block 69946), filled=25600/32768[m
+[m[37m[  0.422206 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.422726 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db29d0, paddr=0x80db29d0, len=512[m
+[m[37m[  0.423203 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.423557 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.423946 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #52: pos=0x2227600 (block 69947), filled=26112/32768[m
+[m[37m[  0.424246 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.424449 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2bd0, paddr=0x80db2bd0, len=512[m
+[m[37m[  0.424649 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.424867 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.425229 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #53: pos=0x2227800 (block 69948), filled=26624/32768[m
+[m[37m[  0.425490 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.425755 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2dd0, paddr=0x80db2dd0, len=512[m
+[m[37m[  0.425998 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.426205 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.426685 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #54: pos=0x2227a00 (block 69949), filled=27136/32768[m
+[m[37m[  0.426938 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.427171 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db2fd0, paddr=0x80db2fd0, len=512[m
+[m[37m[  0.427433 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.427696 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.428064 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #55: pos=0x2227c00 (block 69950), filled=27648/32768[m
+[m[37m[  0.428359 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.428564 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db31d0, paddr=0x80db31d0, len=512[m
+[m[37m[  0.428801 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.429066 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.429543 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #56: pos=0x2227e00 (block 69951), filled=28160/32768[m
+[m[37m[  0.429838 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.430075 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db33d0, paddr=0x80db33d0, len=512[m
+[m[37m[  0.430312 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.430510 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.430899 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #57: pos=0x2228000 (block 69952), filled=28672/32768[m
+[m[37m[  0.431165 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.431375 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db35d0, paddr=0x80db35d0, len=512[m
+[m[37m[  0.431674 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.432004 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.432430 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #58: pos=0x2228200 (block 69953), filled=29184/32768[m
+[m[37m[  0.433006 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.433218 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db37d0, paddr=0x80db37d0, len=512[m
+[m[37m[  0.433413 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.433848 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.434667 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #59: pos=0x2228400 (block 69954), filled=29696/32768[m
+[m[37m[  0.434948 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.435148 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db39d0, paddr=0x80db39d0, len=512[m
+[m[37m[  0.435380 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.435723 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.436280 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #60: pos=0x2228600 (block 69955), filled=30208/32768[m
+[m[37m[  0.436601 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.436804 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3bd0, paddr=0x80db3bd0, len=512[m
+[m[37m[  0.437015 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.437219 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.437865 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #61: pos=0x2228800 (block 69956), filled=30720/32768[m
+[m[37m[  0.438116 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.438338 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3dd0, paddr=0x80db3dd0, len=512[m
+[m[37m[  0.438545 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.438809 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.439247 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #62: pos=0x2228a00 (block 69957), filled=31232/32768[m
+[m[37m[  0.439564 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.439768 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db3fd0, paddr=0x80db3fd0, len=512[m
+[m[37m[  0.439996 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.440208 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.440677 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #63: pos=0x2228c00 (block 69958), filled=31744/32768[m
+[m[37m[  0.440943 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.441138 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db41d0, paddr=0x80db41d0, len=512[m
+[m[37m[  0.441333 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.441527 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.441951 0 oscomp_runner::myfs:60] [32m[DiskReader] before read_one #64: pos=0x2228e00 (block 69959), filled=32256/32768[m
+[m[37m[  0.442229 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c4608, paddr=0x808c4608, len=16[m
+[m[37m[  0.442507 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc080db43d0, paddr=0x80db43d0, len=512[m
+[m[37m[  0.442793 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808c461f, paddr=0x808c461f, len=1[m
+[m[37m[  0.442996 0 axdriver::virtio:167] [32m[VirtIoHal] share: vaddr=0xffffffc0808f92d0, paddr=0x808f92d0, len=48[m
+[m[37m[  0.443349 0 oscomp_runner::myfs:81] [32m[DiskReader] read done: start_byte=0x2221000, total 32768 bytes, 64 reads[m
+[m[37m[  0.446124 0 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/, component=tmp, child_path=/tmp[m
+[m[37m[  0.448175 0 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/, component=proc, child_path=/proc[m
+[m[37m[  0.448742 0 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/, component=sys, child_path=/sys[m
+[m[37m[  0.449973 0 axnet:42] [32mInitialize network subsystem...[m
+[m[37m[  0.450333 0 axnet:45] [32m  use NIC 0: "virtio-net"[m
+[m[37m[  0.454143 0 axnet::smoltcp_impl:329] [32mcreated net interface "eth0":[m
+[m[37m[  0.454690 0 axnet::smoltcp_impl:330] [32m  ether:    52-54-00-12-34-56[m
+[m[37m[  0.455636 0 axnet::smoltcp_impl:331] [32m  ip:       10.0.2.15/24[m
+[m[37m[  0.456140 0 axnet::smoltcp_impl:332] [32m  gateway:  10.0.2.2[m
+[m[37m[  0.456517 0 axruntime:182] [32mInitialize interrupt handlers...[m
+[m[37m[  0.457179 0 axruntime:194] [32mPrimary CPU 0 init OK.[m
+[m==== oscomp-runner start ====
+Initializing trap handling...
+[37m[  0.457919 0:2 oscomp_runner::trap:69] [32mMapped trampoline in kernel: vaddr=0x3ffffffff000 -> paddr=0x80807000, size=0x2000[m
+[mTrap handling initialized, timer interrupts enabled.
+[run_tests] ext4 root filesystem mounted via VFS
+[run_tests] listing root directory...
+[run_tests] root directory entries:
+  /lost+found (Dir)
+  /glibc (Dir)
+  /musl (Dir)
+[run_tests] looking for busybox...
+[37m[  0.461624 0:2 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/, component=musl, child_path=/musl[m
+[m[37m[  0.462635 0:2 oscomp_runner::ext4_vfs:143] [32m[ext4_vfs] lookup: base=/musl, component=busybox, child_path=/musl/busybox[m
+[m[run_tests] found busybox at /musl/busybox
+[run_tests] found busybox, using real ELF execution mode
+[run_tests] entering run_lib_tests_real...
+[run_tests] DEBUG: starting suite basic
+#### OS COMP TEST GROUP START basic ####
+Testing brk :
+========== START test_brk ==========
+Before alloc,heap pos: 65536
+After alloc,heap pos: 65600
+Alloc again,heap pos: 65664
+========== END test_brk ==========
+Testing chdir :
+========== START test_chdir ==========
+chdir ret: 0
+  current working dir : /test_chdir
+========== END test_chdir ==========
+Testing clone :
+========== START test_clone ==========
+  Child says successfully!
+clone process successfully.
+pid:2
+========== END test_clone ==========
+Testing close :
+========== START test_close ==========
+  close 3 success.
+========== END test_close ==========
+Testing dup2 :
+========== START test_dup2 ==========
+  from fd 100
+========== END test_dup2 ==========
+Testing dup :
+========== START test_dup ==========
+  new fd is 100.
+========== END test_dup ==========
+Testing execve :
+========== START test_execve ==========
+  I am test_echo.
+execve success.
+========== END test_execve ==========
+Testing exit :
+========== START test_exit ==========
+exit OK.
+========== END test_exit ==========
+Testing fork :
+========== START test_fork ==========
+  parent process. wstatus:0
+  child process.
+========== END test_fork ==========
+Testing fstat :
+========== START test_fstat ==========
+fstat ret: 0
+fstat: dev: 0, inode: 1, mode: 33204, nlink: 1, size: 34, atime: 1000, mtime: 1000, ctime: 1000
+========== END test_fstat ==========
+Testing getcwd :
+========== START test_getcwd ==========
+getcwd: / successfully!
+========== END test_getcwd ==========
+Testing getdents :
+========== START test_getdents ==========
+open fd:3
+getdents fd:32
+getdents success.
+.
+========== END test_getdents ==========
+Testing getpid :
+========== START test_getpid ==========
+getpid success.
+pid = 2
+========== END test_getpid ==========
+Testing getppid :
+========== START test_getppid ==========
+  getppid success. ppid : 1
+========== END test_getppid ==========
+Testing gettimeofday :
+========== START test_gettimeofday ==========
+gettimeofday success.
+start:100, end:200
+interval: 100
+========== END test_gettimeofday ==========
+Testing mkdir_ :
+========== START test_mkdir ==========
+mkdir ret: 0
+  mkdir success.
+========== END test_mkdir ==========
+Testing mmap :
+========== START test_mmap ==========
+file len: 34
+mmap content:   Hello, mmap successfully!
+========== END test_mmap ==========
+Testing mount :
+========== START test_mount ==========
+Mounting dev:/dev/vda2 to ./mnt
+mount return: 0
+mount successfully
+umount return: 0
+========== END test_mount ==========
+Testing munmap :
+========== START test_munmap ==========
+file len: 34
+munmap return: 0
+munmap successfully!
+========== END test_munmap ==========
+Testing openat :
+========== START test_openat ==========
+open dir fd: 3
+openat fd: 4
+openat success.
+========== END test_openat ==========
+Testing open :
+========== START test_open ==========
+Hi, this is a text file.
+syscalls testing success!
+
+========== END test_open ==========
+Testing pipe :
+========== START test_pipe ==========
+cpid: 0
+cpid: 2
+  Write to pipe successfully.
+========== END test_pipe ==========
+Testing read :
+========== START test_read ==========
+Hi, this is a text file.
+syscalls testing success!
+
+========== END test_read ==========
+Testing sleep :
+========== START test_sleep ==========
+sleep success.
+========== END test_sleep ==========
+Testing times :
+========== START test_times ==========
+mytimes success
+{tms_utime:10, tms_stime:5, tms_cutime:3, tms_cstime:1}
+========== END test_times ==========
+Testing umount :
+========== START test_umount ==========

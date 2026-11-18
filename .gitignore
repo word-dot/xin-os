@@ -1,0 +1,23 @@
+# ===== Rust 构建产物 =====
+target/
+**/target/
+
+# ===== 磁盘镜像 / 二进制 =====
+*.img
+*.img.bak
+sdcard*
+boot.img
+*.crate
+
+# ===== 外部测试集 =====
+testsuits-for-oskernel/
+
+# ===== 日志 / 临时文件 =====
+*.log
+qemu_out*.txt
+*.bak
+patch_*.py
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
